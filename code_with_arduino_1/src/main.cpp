@@ -1,21 +1,36 @@
 #include <Arduino.h>
+#include "serial_monitor.h" // Include the serial monitor header
 
-// put function declarations here:
-int myFunction(int, int);
+// Function declarations
+void initDisplay();
+void displayMessage(const char* message);
+void scrollMessageLeft();
+void initTemperatureHumidity();
+String getTemperatureAndHumidity();
+void initSerialMonitor();
+void displayOnSerialMonitor(const char* message);
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
-  Serial.begin(9600);
-  Serial.print("Result: ");
-  Serial.println(result);
+  // Initialize modules
+  initDisplay();
+  initTemperatureHumidity();
+  initSerialMonitor(); // Initialize the serial monitor
+
+  // Display initial message
+  String temperatureAndHumidityData = getTemperatureAndHumidity();
+  displayMessage(temperatureAndHumidityData.c_str());
+  displayOnSerialMonitor(temperatureAndHumidityData.c_str()); // Display on serial monitor
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
+  // Scroll the message to the left
+  scrollMessageLeft();
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  // Update the message after scrolling
+  String temperatureAndHumidityData = getTemperatureAndHumidity();
+  displayMessage(temperatureAndHumidityData.c_str());
+  displayOnSerialMonitor(temperatureAndHumidityData.c_str()); // Display on serial monitor
+
+  // Add a delay before the next scrolling cycle
+  delay(600); // Adjusted delay to 600 ms to make total time 10 seconds
 }
