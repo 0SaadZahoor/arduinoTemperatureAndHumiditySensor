@@ -9,6 +9,7 @@ void initTemperatureHumidity();
 String getTemperatureAndHumidity();
 void initSerialMonitor();
 void displayOnSerialMonitor(const char* message);
+void displayTimeSinceLastReading(); // Function declaration for time tracking
 
 void setup() {
   // Initialize modules
@@ -31,6 +32,9 @@ void loop() {
   displayMessage(temperatureAndHumidityData.c_str());
   displayOnSerialMonitor(temperatureAndHumidityData.c_str()); // Display on serial monitor
 
+  // Display the time since the last reading
+  displayTimeSinceLastReading();
+
   // Add a delay before the next scrolling cycle
-  delay(600); // Adjusted delay to 600 ms to make total time 10 seconds
+  delay(6000); // Adjusted delay to 6000 ms to make total time 10 seconds
 }
