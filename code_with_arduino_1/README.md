@@ -1,5 +1,5 @@
 # Project 1: Code with Arduino
-
+//The whole code is present in code_with_arduino_1 directory
 ## Overview
 This project is designed to run on Arduino-compatible hardware using PlatformIO as the development environment. The code is written in C++ and organized into `.cpp` and `.h` files, following standard C++ conventions. There is no `.ino` file, as the project is structured for advanced development workflows.
 
