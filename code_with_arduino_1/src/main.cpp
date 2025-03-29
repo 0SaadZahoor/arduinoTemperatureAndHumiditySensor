@@ -37,4 +37,5 @@ void loop() {
 
   // Add a delay before the next scrolling cycle
   delay(6000); // Adjusted delay to 6000 ms to make total time 10 seconds
+
 }
